@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Readerific - Learn to Read!</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Readerific</h1>
+            <button id="settingsButton" class="settings-button">⚙️ Settings</button>
+        </div>
+        <div class="input-section">
+            <label for="wordInput">Enter a word:</label>
+            <input type="text" id="wordInput" placeholder="Type a word..." maxlength="15">
+            <button id="startReading" class="start-button">Let's Read!</button>
+            <div class="volume-control">
+                <label for="autoSoundVolume" title="Volume for automatic letter sounds">
+                    <span class="volume-icon">🔊</span>
+                </label>
+                <input type="range" id="autoSoundVolume" min="0" max="100" value="0" 
+                    title="Adjust volume for automatic letter sounds">
+            </div>
+        </div>
+        
+        <div class="display-section">
+            <div id="wordDisplay" class="word-display"></div>
+            <div class="letter-navigation">
+                <button id="prevLetter" class="nav-button" title="Previous Letter">&lt;</button>
+                <div id="currentLetter" class="current-letter"></div>
+                <button id="nextLetter" class="nav-button" title="Next Letter">&gt;</button>
+            </div>
+            <div class="button-group">
+                <div class="delay-control">
+                    <label for="delayTimer" title="Delay between letters">Delay:</label>
+                    <select id="delayTimer" class="delay-select">
+                        <option value="1000">1s</option>
+                        <option value="1500" selected>1.5s</option>
+                        <option value="2000">2s</option>
+                        <option value="2500">2.5s</option>
+                        <option value="3000">3s</option>
+                    </select>
+                </div>
+                <button id="playButton" class="play-button" title="Auto-play all letters">
+                    <span class="play-icon">▶</span>
+                    <span class="stop-icon" style="display: none">■</span>
+                </button>
+                <button id="pronounceButton" class="pronounce-button">Pronounce</button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <p>Use <span class="key">spacebar</span> to move forward</p>
+            <p>Use <span class="key">←</span> and <span class="key">→</span> arrows to navigate</p>
+            <p>Click the big letter to hear its sound!</p>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Custom Letter Recordings</h2>
+                <div class="modal-actions">
+                    <button class="reset-button" id="resetSettings">Reset All</button>
+                    <button class="close-button" id="closeSettings">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <table class="recordings-table">
+                    <thead>
+                        <tr>
+                            <th>Letter</th>
+                            <th>Letter Name</th>
+                            <th>Letter Sound</th>
+                        </tr>
+                    </thead>
+                    <tbody class="recordings-grid">
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
