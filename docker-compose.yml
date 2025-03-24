@@ -2,17 +2,13 @@ version: '3.8'
 
 services:
   readerific:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: nginx:alpine
     ports:
-      - "8000:80"  # Maps container port 80 to host port 8000
+      - "8000:80"
     volumes:
-      - ./:/usr/share/nginx/html  # For development: maps local files to container
+      - ./web:/usr/share/nginx/html:ro
     networks:
-      - app-network  # Add this to your existing network if needed
+      - readerific-net
 
 networks:
-  app-network:
-    name: app-network  # You can change this to match your existing network name
-    external: true  # Set to true if the network already exists from other services
+  readerific-net:
